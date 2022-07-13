@@ -1,0 +1,14 @@
+[   
+    {"nombre": "CAFE CON LECHE CON 2 MEDIALUNAS", "precio": "$249.99", "id":"1"},
+    {"nombre": "CAPUCHINO MAS PORCION DE TORTA", "precio": "$399.99", "id":"2"},
+    {"nombre": "LICUADO MAS ALFAJOR A ELECCION", "precio": "$499.99", "id":"3"},
+    {"nombre": "SUBMARINO MAS MASITAS FINAS", "precio": "$649.99", "id":"4"},
+    {"nombre": "EMPANADAS SALTEÑAS", "precio": "$99.99", "id":"5"},
+    {"nombre": "BIFES A LA PORTUGUESA", "precio": "$1099.99", "id":"6"},
+    {"nombre": "MILANESA NAPOLITANA", "precio": "$849.99", "id":"7"},
+    {"nombre": "TALLARINES O RAVIOLES", "precio": "$699.99", "id":"8"},
+    {"nombre": "ASADO", "precio": "$1199.99", "id":"9"},
+    {"nombre": "CAZUELA DE MARISCOS", "precio": "$1399.99", "id":"10"},
+    {"nombre": "ÑOQUIS ROMANOS", "precio": "$999.99", "id":"11"},
+    {"nombre": "SALMON ROSADO", "precio": "$1649.99", "id":"12"}
+]
