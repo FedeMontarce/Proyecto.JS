@@ -147,27 +147,28 @@ document.getElementById('form')
 
 //----//
 
-// let reserva;
-// let reservaLS = JSON.stringify(localStorage.getItem(`guardarReserva`))
+let reserva;
+let reservaLS;
 
-// if (reservaLS) {
+if (localStorage.getItem(`guardarReserva`) !== null) {
 
-// reserva = reservaLS (swal.fire(JSON.stringify(localStorage.getItem(`guardarReserva`))))
+  reserva = (swal.fire (JSON.stringify(localStorage.getItem(`guardarReserva`))));
+  
+} 
+else {
 
-// } else {
+  reserva = Swal.fire ( {
+    title: 'Bienvenidos a "El Timón", un lugar especializado en comida Argentina. Si desea reservar una mesa complete el formulario que se encuentra en la parte inferior de la pagina',
+    showClass: {
+      popup: 'animate__animated animate__fadeInDown'
+    },
+    hideClass: {
+      popup: 'animate__animated animate__fadeOutUp'
+    }
 
-//   reserva = Swal.fire ( {
-//     title: 'Bienvenidos a "El Timón", un lugar especializado en comida Argentina. Si desea reservar una mesa complete el formulario que se encuentra en la parte inferior de la pagina',
-//     showClass: {
-//       popup: 'animate__animated animate__fadeInDown'
-//     },
-//     hideClass: {
-//       popup: 'animate__animated animate__fadeOutUp'
-//     }
-
-//   }
-//   )
-// }
+  }
+  )
+};
 
 //----//
 
