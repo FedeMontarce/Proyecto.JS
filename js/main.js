@@ -152,7 +152,7 @@ let reservaLS;
 
 if (localStorage.getItem(`guardarReserva`) !== null) {
 
-  reserva = (swal.fire (JSON.stringify(localStorage.getItem(`guardarReserva`))));
+  reserva = (swal.fire (("Su reserva:"), JSON.stringify(localStorage.getItem(`guardarReserva`))));
   
 } 
 else {
