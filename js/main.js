@@ -152,7 +152,7 @@ let reservaLS;
 
 if (localStorage.getItem(`guardarReserva`) !== null) {
 
-  reserva = (swal.fire (("Su reserva:"), JSON.stringify(localStorage.getItem(`guardarReserva`))));
+  reserva = (swal.fire (("Su reserva:"), (localStorage.getItem(`guardarReserva`))));
   
 } 
 else {
@@ -175,3 +175,18 @@ else {
 fetch('/data.json')
   .then( res => res.json())
   .then( data => {console.log(data) } )
+
+//----//
+
+const eliminarReserva = document.getElementById("eliminarReserva")
+.addEventListener('click', () => {
+
+Swal.fire({
+  icon: 'error',
+  title: 'Reserva eliminada',
+})
+
+localStorage.clear("guardarReserva")
+
+})
+
