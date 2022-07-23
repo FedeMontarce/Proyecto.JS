@@ -1,5 +1,3 @@
-//Array con mis productos
-
 class Producto {
   constructor(nombre, precio) {
     this.nombre = nombre.toUpperCase();
@@ -25,10 +23,6 @@ productos.forEach((num) => {
   console.log(num);
 });
 
-//----//
-
-//Desestructuracion
-
 console.log("DESAYUNOS/MERIENDAS:");
 const [a, b, c, d] = productos;
 console.log(a, b, c, d);
@@ -40,10 +34,6 @@ console.log(e, f, g, i, j, l);
 console.log("PASTAS:");
 const [, , , , , , , h, , , k] = productos;
 console.log(h, k);
-
-//----//
-
-//DOM: cambios en el menu
 
 let articulo1 = document.getElementById("articulo1");
 articulo1.innerText = "CAFE CON LECHE CON 2 MEDIALUNAS";
@@ -105,17 +95,11 @@ articulo12.innerText = "SALMON ROSADO";
 let precio12 = document.getElementById("precio12");
 precio12.innerText = "$1649.99";
 
-//Formulario
-
 document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
-  const data = Object.fromEntries(new FormData(e.target)); 
+  const data = Object.fromEntries(new FormData(e.target));
   localStorage.setItem("guardarReserva", JSON.stringify(data));
 });
-
-//----//
-
-//API
 
 const btn = document.getElementById("button");
 
@@ -139,13 +123,25 @@ document.getElementById("form").addEventListener("submit", function (event) {
   );
 });
 
-//----//
-
 let reserva;
 let reservaLS;
 
 if (localStorage.getItem(`guardarReserva`) !== null) {
-  reserva = swal.fire("Su reserva:", localStorage.getItem(`guardarReserva`));
+  reserva = JSON.parse(localStorage.getItem("guardarReserva"));
+  swal.fire(
+    "Su reserva: Nombre:" +
+      reserva.name +
+      ", Fecha:" +
+      reserva.date +
+      "; Email: " +
+      reserva.email +
+      " , Horario:" +
+      reserva.time +
+      ", Telefono:" +
+      reserva.phone +
+      ", Cantidad personas:" +
+      reserva.people
+  );
 } else {
   reserva = Swal.fire({
     title:
@@ -159,39 +155,40 @@ if (localStorage.getItem(`guardarReserva`) !== null) {
   });
 }
 
-//----//
-
 fetch("/data.json")
   .then((res) => res.json())
   .then((data) => {
     console.log(data);
   });
 
-//----//
-
 const eliminarReserva = document
   .getElementById("eliminarReserva")
   .addEventListener("click", () => {
-    Swal.fire({
-      icon: "error",
-      title: "Reserva eliminada",
-    });
+    if (localStorage.getItem(`guardarReserva`) !== null) {
+      Swal.fire({
+        icon: "error",
+        title: "Reserva eliminada",
+      });
 
-    localStorage.clear("guardarReserva");
+      localStorage.clear("guardarReserva");
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "No existe reserva",
+      });
+    }
   });
 
-  let formDate = document.querySelector("#date");
-  let currentDate = new Date();
-  let year = currentDate.getFullYear();
-  let month = (currentDate.getMonth() + 1);
-  let date = (currentDate.getDate());
-  if(date < 10) {
-    date = '0' + date;
-  }
-  if(month < 10) {
-    month = '0' + month;
-  }
-  let today = year + "-" + month + "-" + date;
-  formDate.setAttribute("min", today);
-  
-  
+let formDate = document.querySelector("#date");
+let currentDate = new Date();
+let year = currentDate.getFullYear();
+let month = currentDate.getMonth() + 1;
+let date = currentDate.getDate() + 1;
+if (date < 10) {
+  date = "0" + date;
+}
+if (month < 10) {
+  month = "0" + month;
+}
+let today = year + "-" + month + "-" + date;
+formDate.setAttribute("min", today);
